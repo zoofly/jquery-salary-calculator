@@ -1,0 +1,30 @@
+$(document).ready(onReady); //instantiates jQuery
+
+const employees= [];
+
+function onReady(){ 
+    //add necessary functions to get all the moving parts working together
+addEmployee;
+
+
+
+
+}
+
+
+
+function addEmployee(firstNameInput, lastNameInput, employeeIDInput, jobTitleInput, annualSalaryInput){
+    //function to take input values and append them to table
+    const addEmployeeObject = {
+        firstName: firstNameInput,
+        lastName: lastNameInput,
+        employeeID: employeeIDInput,
+        jobTitle: jobTitleInput,
+        annualSalary: annualSalaryInput
+    }
+    employees.push(addEmployeeObject);
+    $( '#submitAll' ).on('click', function(){
+        employees($('#firstNameInput').val(), $('#lastNameInput').val(), $('#iDInput').val(), $('#jobTitleInput').val(), $('#annualSalaryInput').val());
+
+    });
+}
