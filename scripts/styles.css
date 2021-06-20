@@ -7,7 +7,21 @@ header{
     
 }
 
+button{
+    float: right;
+    border-radius: 5px;
+}
+
 th, td{
     border: 1px solid black;
-    padding: 15px;
+    
 }
+
+table{
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+
+
