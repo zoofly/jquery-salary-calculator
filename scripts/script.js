@@ -4,7 +4,9 @@ const employees= [];
 
 function onReady(){ 
     //add necessary functions to get all the moving parts working together
-    $( '#submitAll' ).on('click', addEmployee); 
+    $( '#submitAll' ).on('click', addEmployee);
+    $( '#submitAll' ).on('click', emptyInput);
+
 
 }
 
@@ -21,8 +23,20 @@ function addEmployee(){
     }
     employees.push(employeeObject);
     console.log(employees);
+    emptyInput();
 }
 
 function attachToTable(){
+    for (let person of employees){
+        $('.tableOfEmployees').append(`<td> ${person.firstName}</td>`)
+    }
+}
+
+function emptyInput(){
+    $('#firstNameInput').val('');
+    $('#lastNameInput').val('');
+    $('#iDInput').val('');
+    $('#jobTitleInput').val('');
+    $('#annualSalaryInput').val('');
 
 }
