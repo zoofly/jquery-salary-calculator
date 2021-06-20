@@ -24,4 +24,9 @@ table{
     
 }
 
+#monthlyTotal{
+    font-size: 20px;
+    text-align: right;
+    font-weight: bold;
+}
 
