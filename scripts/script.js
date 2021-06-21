@@ -1,6 +1,7 @@
 $(document).ready(onReady); //instantiates jQuery
 
 const employees= [];
+let monthlyTotal= 0;
 
 function onReady(){ 
     //add necessary functions to get all the moving parts working together
@@ -28,16 +29,20 @@ function addEmployee(){
     emptyInput(); 
 }
 
-function attachToTable(){     
-    for (let person of employees){
-        $('.arrayObjects').closest('tr').append(`<td> ${person.firstName}</td>`);
-        $('.arrayObjects').closest('tr').append(`<td> ${person.lastName}</td>`);
-        $('.arrayObjects').closest('tr').append(`<td> ${person.employeeID}</td>`);
-        $('.arrayObjects').closest('tr').append(`<td> ${person.jobTitle}</td>`);
-        $('.arrayObjects').closest('tr').append(`<td> $${person.annualSalary}</td>`);
+
+function attachToTable(){  
+    for(let person of employees)   //right now, function only adds first item in array correctly
+   $('.tableOfEmployees').append(`
+    <tr>
+    <td> ${person.firstName} </td>
+    <td> ${person.lastName} </td>
+    <td> ${person.employeeID} </td>
+    <td> ${person.jobTitle} </td>
+    <td> ${person.annualSalary} </td>
+    </tr>`)
     }
-    $('.arrayObjects').closest('tr').append(`<td> <input type="button" id="deleteButton" value="Delete"</td>`)
- }
+    
+
 
 function emptyInput(){ //empties input values
     $('#firstNameInput').val('');
@@ -47,9 +52,27 @@ function emptyInput(){ //empties input values
     $('#annualSalaryInput').val('');
 }
 
-function deleteEmployee(){
-    employees.splice(0,1);
+// function deleteEmployee(){ //
+//     employees.splice(0,1);
+//     if(person )
+// }
+
+ 
+// if (monthlyTotal >=20000){
+//     $('#monthlyTotal').css('color', red);
+// } else if(monthlyTotal<=20000){
+//     $('monthlyTotal').css('color', black);
+// }
+
+
+function monthlyMath(){
+    let total=0;
+    for(let employee of employees){
+        total+= Number(employee.annualSalary)
+    }
+    if (0>= total){
+        return 0;
+    }
+    return total / 12;
 }
-
-
-
+    

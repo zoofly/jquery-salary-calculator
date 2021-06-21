@@ -21,17 +21,17 @@
 <h1> Add Employee </h1>
 
 <section class="inputValues">
-    
-    <input id='firstNameInput' type=text placeholder="First Name">
+    <form>
+        <input id='firstNameInput' type=text placeholder="First Name"/>
 
-    <input id='lastNameInput' type=text placeholder="Last Name">
+        <input id='lastNameInput' type=text placeholder="Last Name"/>
 
-    <input id='iDInput' type=number placeholder="Employee ID">
+        <input id='iDInput' type=number placeholder="Employee ID"/>
     
-    <input id='jobTitleInput' type=text placeholder="Job Title">
+        <input id='jobTitleInput' type=text placeholder="Job Title"/>
 
-    <input id='annualSalaryInput' type=number placeholder="Annual Salary">
-    
+        <input id='annualSalaryInput' type=number placeholder="Annual Salary"/>
+    </form>
 </section>
 
 <button id='submitAll'> Submit </button>
@@ -41,7 +41,7 @@
 
     <table class='tableOfEmployees'>
 
-        <tb>
+        <thead>
         <tr id=tableHeaders>
             <th class='tdFirst'> First Name</th>
             <th class='tdLast'> Last Name</th>
@@ -50,18 +50,16 @@
             <th class='tdSalary'> Annual Salary</th>
             <th class='tdDelete'> Delete? </th>
         </tr>
-       
-        <tr class='arrayObjects'>
+        </thead>
 
-        </tr>
+        <tbody id='employeeList'>
 
-        </tb>
+        </tbody>
     </table>
 
-<section id=monthlyTotal>
-    <p> Total Monthly: </p>
+    <tfoot id='monthlyTotal'> Total Monthly: </tfoot>
 
-</section>
+
 
 </section>
 
