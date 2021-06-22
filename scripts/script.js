@@ -6,9 +6,7 @@ let monthlyTotal= 0;
 function onReady(){ 
     //add necessary functions to get all the moving parts working together
     $( '#submitAll' ).on('click', addEmployee);
-    $( '#submitAll' ).on('click', attachToTable);
-    $( '#submitAll' ).on('click', emptyInput);
-    // $( '#deleteButton').on('click', deleteEmployee);
+    $( '#deleteButton').on('click', deleteEmployee);
 
 
 }
@@ -27,12 +25,14 @@ function addEmployee(){
     employees.push(employeeObject);
     console.log(employees);
     emptyInput(); 
+    attachToTable();
 }
 
 
 function attachToTable(){  
-    for(let person of employees)   //right now, function only adds first item in array correctly
-   $('.tableOfEmployees').append(`
+    $('.employeeList').empty();
+    for(let person of employees){   //function reiterates whole array again and adds new input on click
+   $('.employeeList').append(`
     <tr>
     <td> ${person.firstName} </td>
     <td> ${person.lastName} </td>
@@ -40,8 +40,9 @@ function attachToTable(){
     <td> ${person.jobTitle} </td>
     <td> ${person.annualSalary} </td>
     </tr>`)
+    $('employeeList').append('<td><button id=deleteButton> Delete </button></td>')
     }
-    
+}
 
 
 function emptyInput(){ //empties input values
@@ -52,10 +53,15 @@ function emptyInput(){ //empties input values
     $('#annualSalaryInput').val('');
 }
 
-// function deleteEmployee(){ //
-//     employees.splice(0,1);
-//     if(person )
-// }
+function deleteEmployee(employeeID){
+    employees= employees.filter(function (employee){
+        return employees.employeeID !==employeeID
+    });
+    
+}
+
+    // let employeeIndex = employees.idexOf(1234);
+    //employees.splice(index,1)
 
  
 // if (monthlyTotal >=20000){
@@ -75,4 +81,3 @@ function monthlyMath(){
     }
     return total / 12;
 }
-    
