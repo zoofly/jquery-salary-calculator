@@ -4,11 +4,15 @@ const employees= [];
 let monthlyTotal= 0;
 
 function onReady(){ 
+    console.log("Let's get started");
     //add necessary functions to get all the moving parts working together
     $( '#submitAll' ).on('click', addEmployee);
-    $( '#deleteButton').on('click', deleteEmployee);
-
-
+    $( '.employeeList').on('click', '#deleteButton', function(){
+        const employeeID = $(this).data('id');
+    console.log('Delete this employee: ', employeeID);
+    deleteEmployee(employeeID);
+    });
+    
 }
 
 
@@ -26,8 +30,8 @@ function addEmployee(){
     console.log(employees);
     emptyInput(); 
     attachToTable();
+    monthlyMath();
 }
-
 
 function attachToTable(){  
     $('.employeeList').empty();
@@ -39,9 +43,10 @@ function attachToTable(){
     <td> ${person.employeeID} </td>
     <td> ${person.jobTitle} </td>
     <td> ${person.annualSalary} </td>
+    <td> <input type="button" data-id="deleteButton" value="Delete"</td>
     </tr>`)
-    $('employeeList').append('<td><button id=deleteButton> Delete </button></td>')
     }
+   
 }
 
 
@@ -54,22 +59,10 @@ function emptyInput(){ //empties input values
 }
 
 function deleteEmployee(employeeID){
-    employees= employees.filter(function (employee){
-        return employees.employeeID !==employeeID
-    });
+    console.log('delete is working');
+    employees = employees.filter(emp => employeeID !== Number(emp.employeeID));
     
 }
-
-    // let employeeIndex = employees.idexOf(1234);
-    //employees.splice(index,1)
-
- 
-// if (monthlyTotal >=20000){
-//     $('#monthlyTotal').css('color', red);
-// } else if(monthlyTotal<=20000){
-//     $('monthlyTotal').css('color', black);
-// }
-
 
 function monthlyMath(){
     let total=0;
@@ -80,4 +73,9 @@ function monthlyMath(){
         return 0;
     }
     return total / 12;
+//     if (monthlyTotal >=20000){
+//     $('#monthlyTotal').css('color', red);
+// } else if(monthlyTotal<=20000){
+//     $('monthlyTotal').css('color', black);
+// }
 }
