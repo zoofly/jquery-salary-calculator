@@ -91,8 +91,8 @@ function updateTotal(){
           "en-US", { style: "currency", currency: "USD" })
         }
   `);
-  if (monthlyTotal >= 20000) {
-    $('#total').css('color', 'red');
+  if (monthlyTotal > 20000) {
+    $('.monthlyTotal').css('color', 'red');
   }
 
 }
