@@ -74,11 +74,6 @@ function monthlyMath(){
         return 0;
     }
     return total / 12;
-//     if (monthlyTotal >=20000){
-//     $('#monthlyTotal').css('color', red);
-// } else if(monthlyTotal<=20000){
-//     $('monthlyTotal').css('color', black);
-// }
 }
 
 function updateTotal(){
