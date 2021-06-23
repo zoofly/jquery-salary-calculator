@@ -7,11 +7,8 @@ function onReady(){
     console.log("Let's get started");
     //add necessary functions to get all the moving parts working together
     $( '#submitAll' ).on('click', addEmployee);
-    $( '.employeeList').on('click', '#deleteButton', function(){
-        const employeeID = $(this).data('id');
-    console.log('Delete this employee: ', employeeID);
-    deleteEmployee(employeeID);
-    });
+    $( 'table').on('click', '.deleteButton', deleteEmployee);
+    
     
 }
 
@@ -43,7 +40,7 @@ function attachToTable(){
     <td> ${person.employeeID} </td>
     <td> ${person.jobTitle} </td>
     <td> ${person.annualSalary} </td>
-    <td> <input type="button" data-id="deleteButton" value="Delete"</td>
+    <td> <input type="button" class="deleteButton" value="Delete"</td>
     </tr>`)
     }
    
@@ -58,9 +55,9 @@ function emptyInput(){ //empties input values
     $('#annualSalaryInput').val('');
 }
 
-function deleteEmployee(employeeID){
+function deleteEmployee(){
     console.log('delete is working');
-    employees = employees.filter(emp => employeeID !== Number(emp.employeeID));
+    $(this).closest('tr').remove()
     
 }
 
