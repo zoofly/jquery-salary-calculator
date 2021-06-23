@@ -9,7 +9,6 @@ function onReady(){
     $( '#submitAll' ).on('click', addEmployee);
     $( 'table').on('click', '.deleteButton', deleteEmployee);
     
-    
 }
 
 
@@ -57,7 +56,11 @@ function emptyInput(){ //empties input values
 
 function deleteEmployee(){
     console.log('delete is working');
-    $(this).closest('tr').remove()
+    $(this).closest('tr').remove();
+    var val = $(this).closest('tr').find(".name").text();
+    var index = employees.findIndex(function(item) {return item.name == val})
+    employees.splice(index, 1)
+    console.log(employees);
     
 }
 
