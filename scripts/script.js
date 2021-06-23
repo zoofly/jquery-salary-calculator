@@ -1,7 +1,7 @@
 $(document).ready(onReady); //instantiates jQuery
 
 const employees= [];
-let monthlyTotal= 0;
+
 
 function onReady(){ 
     console.log("Let's get started");
@@ -27,6 +27,7 @@ function addEmployee(){
     emptyInput(); 
     attachToTable();
     monthlyMath();
+    updateTotal();
 }
 
 function attachToTable(){  
@@ -78,4 +79,20 @@ function monthlyMath(){
 // } else if(monthlyTotal<=20000){
 //     $('monthlyTotal').css('color', black);
 // }
+}
+
+function updateTotal(){
+    console.log('in updateTotal')
+    let monthlyTotal = monthlyMath();
+  // clear the footer and inject the new total
+  $('.monthlyTotal').empty().append(`
+      Monthly Total:
+        ${monthlyTotal.toLocaleString(
+          "en-US", { style: "currency", currency: "USD" })
+        }
+  `);
+  if (monthlyTotal >= 20000) {
+    $('#total').css('color', 'red');
+  }
+
 }
